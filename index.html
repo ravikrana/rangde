@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RANG DE</title>
+    <link rel="shortcut icon" href="images/rangde.png">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+	
+	<link rel="stylesheet" href="js/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="js/jquery-ui-1.11.4/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="js/angular-material-1.1.1/angular-material.min.css">
+	<link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	
+	
+</head>
+<body ng-app="webApp">
+<div ng-controller="MainController" class="rang-de-game">
+	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+				<img style="margin:10px;float:left" src="images/rangde.png" width="100" height="45"/> 
+                <ul class="nav navbar-nav">
+                    <li style="float:right;margin-top:10px" class = "'active'" ><a><span ng-click="callHello();" class="menu-header">GAME ARENA</span></a></li>
+				</ul>
+				<md-autocomplete
+				md-selected-item="selectedGame"
+				md-search-text-change="searchTextChange(searchText)"
+				md-search-text="searchText"
+				md-selected-item-change="selectedItemChange(item)"
+				md-items="item in querySearch(searchText)"
+				md-item-text="item.title"
+				md-min-length="0"
+				placeholder="Looking for a Game?">
+			  <md-item-template>
+				<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.title}}</span>
+			  </md-item-template>
+			  <md-not-found>
+				No games matching "{{searchText}}" were found.
+			  </md-not-found>
+			</md-autocomplete>
+				
+			</div>
+			
+	</nav>
+	
+<div  class="container-data col-md-12">
+	<div class="col-md-3 side-menu">
+			<h3>Category</h3>
+			<md-content>
+
+					<md-list flex="">
+					 
+					  <md-divider></md-divider>
+					  <md-subheader class="md-no-sticky">Category</md-subheader>
+					  <md-list-item class="md-2-line" ng-class="[selectedGenre == game ? 'selected-category':'']" ng-click="selectGenre(game)" ng-repeat="game in categoryList">
+						<md-icon md-svg-icon="{{game.options.icon}}" ng-if="game.options.icon" ng-class="{'md-avatar-icon': game.options.avatarIcon}"></md-icon>
+						<img ng-src="images/Genre/{{game}}.jpg" class="md-avatar" alt="{{game}}">
+						<div class="md-list-item-text" ng-class="{'md-offset': game.options.offset }">
+						  <h3> {{ game }} </h3>
+						</div>
+						
+					  </md-list-item>
+					</md-list>
+				  </md-content> 
+
+	</div>
+	<div class="col-md-9 rangde-main" ng-include = "'game-collection.tpl.html'"></div>
+</div>
+
+
+
+
+
+<script type="text/ng-template" id="game-collection.tpl.html">
+
+	<div class="col-md-12">
+			
+			<div style="margin-bottom:10px" class="col-md-6">
+			 <div class="btn-group col-md-6">
+			   <label class="btn btn-default" ng-model="sortType" btn-radio="'asc'" ng-click="sortType=false" popover-placement="bottom" popover="Ascending" popover-trigger="mouseenter">
+				 <i class="fa fa-chevron-up"></i>
+			   </label>
+		   
+			   <label class="btn btn-default" ng-model="sortType" btn-radio="'desc'" ng-click="sortType=true" popover-placement="bottom" popover="Descending" popover-trigger="mouseenter">
+				 <i class="fa fa-chevron-down"></i>
+			   </label>
+			   
+			   <button class='btn btn-default' ng-click="sort(selectedSort)">
+				 <i class="fa fa-sort-amount-desc" ></i>
+				 Sort
+			   </button>  
+			   <select style="display:inline;position:absolute" class="form-control"  ng-model="selectedSort" ng-init="selectedSort='score'" ng-options="plan for plan in filterList">
+				</select>
+			 </div> 
+		 
+	
+			  
+		 
+		   
+   
+		</div>
+   </div>
+	<div  class="tech-container-first col-md-12">
+	<div class="container" ng-init="sortedMech = 'score'">
+		
+			<div class="card-item" ng-repeat="game in gameData | orderBy:[sortedMech]:sortType | filter:(selectedGenre==='All category' ? undefined : { genre:selectedGenre }) | filter:{title:searchText}" flex-xs flex-gt-xs="50" layout="column">
+				
+				<md-card class="card-elem" ng-class="[highlightGame == game.title?'highlight-card':'']" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" ng-click="selectGame(game)" md-theme-watch>
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{game.title}}</span>
+							<span class="md-subhead">{{game.platform}}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+								<span style="margin-left:15px;margin-top:-10px;float:right" title="{{game.score}}" class="stars alignright">
+										<span ng-style="{ 'width': getStars(game.score) }"></span>
+									</span>
+								
+							
+					</md-card-title-media>
+					</md-card-title>
+						<span ng-if="game.editors_choice == 'Y'" style="margin-left:15px">Editor Choice: <img width="20" height="20" src="images/editorChoice.jpg"/></span>
+						<span style="margin-left:15px;margin-top:5px"><img style="margin-right:5px;" width="30" height="30" src="images/game.png"/>{{game.genre}}</span>
+					<md-card-content>
+						
+						
+					</md-card-content>
+				</md-card>
+			</div>
+			<div style="float:right;margin-bottom:10px;margin-right:100px">
+			<img width="35" height="30" ng-show="loadRepo" src="images/giphy.gif"/>
+		
+			</div>
+		
+	</div>
+	</div>
+</script>
+
+
+</section>
+<div id="mybutton">
+		<button class="feedback">X-Rate : {{xrateLimit}}</button>
+</div>
+</div>
+
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="js/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+<script src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="js/angular-material-1.1.1/angular-animate.js"></script>
+<script src="js/angular-material-1.1.1/angular-aria.js"></script>
+<script src="js/angular-material-1.1.1/angular-material.js"></script>
+
+
+<script src="app.js" ></script>
+<script src="js/scripts/technology-controller.js"/>
+
+</body>

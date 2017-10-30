@@ -1,0 +1,202 @@
+/*Slider*/
+
+
+
+
+md-list-item.md-2-line, md-list-item.md-2-line>.md-no-style{
+	height:50px;
+	min-height:50px;
+}
+md-list-item:hover{
+	background:#7fbbe4;;
+	cursor: pointer;
+}
+.selected-category{
+	background:#7fbbe4;;
+	
+}
+.selected-category div h3 {
+	color:white;
+}
+.rangde-main {
+	top:100px;
+}
+.container-data{
+	padding-left:0px;
+}
+md-content{
+	overflow:hidden;
+}
+md-card md-card-title md-card-title-media{
+	position: relative;
+	left:-100px;
+}
+.menu-header{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+	position:inherit !important;
+}
+.navbar-default {
+    background-color: #3c88bd !important;
+    border-color: #24363c !important;
+	height:65px;
+	
+}
+
+span.stars, span.stars span {
+    display: block;
+   /* Download the star image here: http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css */
+    background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+.alignright {
+  float:right;
+}
+.rang-de-game md-autocomplete md-autocomplete-wrap{
+	background: #90bee6;
+    top: 10px;
+    width: 45%;
+}
+md-card{
+	width:130%;
+}
+
+.rang-de-game md-autocomplete{
+	display: initial;
+}
+.user-logo{
+	margin:10px;float:right;border-radius:50px;width:50px;height:50px;border:2px solid black;
+}
+.user-logo:hover{
+	border:2.5px solid black;
+}
+.user-logo img{
+	width: 40px;height: 35px;margin-top: 5px;
+}
+.container {
+	margin:0px !important;
+	width:100%;
+};
+
+.rang-de-game .card-elem{
+	min-width: 800px;
+}
+.rang-de-game .card-elem2{
+	min-width: 600px;
+
+}
+.rang-de-game .card-elem:hover{
+	background: aliceblue;
+	box-shadow: 2px 3px 1px #cec8c8;
+}
+.highlight-card{
+	background: aliceblue;
+	box-shadow: 2px 3px 1px #cec8c8;
+}
+
+.card-language{
+	top:100px;
+}
+.add-border-lang {
+	border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+}
+.md-chips {
+	font-size: 13px
+}
+.md-chips md-chip {
+    border-radius: 3px
+}
+.md-chips md-chip ._md-chip-remove md-icon {
+        height: 14px;
+        width: 14px
+}
+md-icon {
+height: 14px;
+width: 14px;
+min-height: 14px;
+min-width:14px
+}
+.green-dot{
+	coolor:green;
+	
+}
+.yellow-dot{
+	color:yellow;
+}
+.red-dot{
+	color:red;
+}
+.c-float-right{
+	float:right;
+}
+.fa-search{
+	font-size:1.6em;
+}
+.blue-dot{
+	color:blue;
+}
+.repo-container {
+	min-height: 30px;
+    box-shadow: 1px 1px 1px 0px grey;
+}
+.codeLabel{
+	background:#d0cdcd;
+	padding:1px;
+	
+}
+.section-left{
+	    min-height: 500px;
+	top:100px
+}
+.user-chips{
+	padding: 3px;
+    border-bottom: 1px solid #b7b4b4;
+}
+.cMT100{
+	margin-top:100px;
+}
+.cMT10{
+	margin-top:10px;
+}
+
+.header {
+	font-size:18px;
+	font-weight:bold;
+}
+
+select  {
+    outline: 0;
+    overflow: hidden;
+    height: 30px;
+     background: #85c8d0;
+    color: #ffffff;
+    border: #2c343c;
+    padding: 5px 3px 5px 10px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 10px;
+}
+
+select option {border: 1px solid #000; background: #85c8d0;}
+
+.feedback {
+	background-color : #7fbbe4;
+	padding: 10px 20px;
+	border-radius: 4px;
+	border-color: #46b8da;
+  }
+  
+  #mybutton {
+	position: fixed;
+	bottom: -4px;
+	right: 10px;
+  }
